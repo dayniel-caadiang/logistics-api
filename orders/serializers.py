@@ -109,8 +109,11 @@ class OrderUpdateStatusSerializer(serializers.ModelSerializer):
 class OrderListSerializer(serializers.ModelSerializer):
     """
     Lightweight serializer for listing many orders
-    Only essential fields for performance
+    Includes all essential fields for mobile app display
     """
+    
+    created_at = serializers.DateTimeField(read_only=True, format="%Y-%m-%d %H:%M:%S")
+    updated_at = serializers.DateTimeField(read_only=True, format="%Y-%m-%d %H:%M:%S")
     
     class Meta:
         model = Order
@@ -118,8 +121,21 @@ class OrderListSerializer(serializers.ModelSerializer):
             'id',
             'order_number',
             'customer_name',
+            'customer_email',
+            'phone_number',           # ✅ ADDED
+            'delivery_address',       # ✅ ADDED
             'delivery_city',
+            'delivery_postal_code',
+            'order_description',
             'order_status',
             'assigned_driver',
+            'driver_notes',
+            'pickup_time',
+            'delivery_time',
+            'current_latitude',
+            'current_longitude',
+            'delivery_photo_url',
             'created_at',
+            'updated_at',
+            'created_by',
         ]
