@@ -140,5 +140,7 @@ if DEBUG:
 else:
     CORS_ALLOWED_ORIGINS = [
         "https://apps.powerapps.com",
+        "https://make.powerapps.com",
+        
         # Add your Flutter app domain later
     ]
